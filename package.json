@@ -1,0 +1,40 @@
+{
+  "name": "element-kit",
+  "private": true,
+  "version": "0.0.0",
+  "description": "ElementKit is the official frontend kit to get you started building dApps with the Element SDK and Element API.",
+  "main": "index.js",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.13.2",
+  "scripts": {
+    "dev": "turbo run dev --parallel --cache=local:r",
+    "dev:demo": "turbo run dev --filter=@element-kit/demo",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "test": "turbo run test",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.9",
+    "@types/node": "^20.17.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3",
+    "turbo": "^2.3.0",
+    "typescript": "^5.6.3"
+  },
+  "keywords": [],
+  "author": "luchunwei",
+  "license": "MIT"
+}
