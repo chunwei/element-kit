@@ -22,7 +22,8 @@
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
-    "add:component": "pnpm dlx shadcn@latest add"
+    "add:component": "pnpm dlx shadcn@latest add",
+    "test": "vitest"
   },
   "publishConfig": {
     "access": "public"
