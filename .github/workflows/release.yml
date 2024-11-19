@@ -28,9 +28,10 @@ jobs:
         registry-url: https://registry.npmjs.org/
         cache: 'pnpm'
 
+    - name: Authenticate to npm
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
 
     - run: pnpm release
-      env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
