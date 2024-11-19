@@ -8,12 +8,13 @@ function Collections() {
   >('floorPrice')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc')
 
-  const { collections, isLoading, error, isEmpty, totalCount, refresh } =
-    useCollections({
+  const { collections, isLoading, error, totalCount, refresh } = useCollections(
+    {
       limit,
       sortBy,
       sortDirection
-    })
+    }
+  )
 
   //   if (isLoading) return <div>Loading collections...</div>
   //   if (isEmpty) return <div>No collections found</div>
@@ -88,7 +89,7 @@ function Collections() {
         }}
       >
         {isLoading
-          ? Array.from({ length: 5 }).map((n, i) => (
+          ? Array.from({ length: 5 }).map((_, i) => (
               <div
                 key={i}
                 className="border rounded-md"
