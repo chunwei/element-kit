@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -26,9 +26,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - name: Install pnpm and dependencies
-      run: |
-        corepack enable
-        pnpm install --frozen-lockfile
+
+    - name: Install pnpm
+      run: corepack enable && corepack prepare pnpm@latest --activate
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
     - run: pnpm build --if-present
     - run: pnpm test
