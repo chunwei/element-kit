@@ -19,7 +19,7 @@ interface Props {
 
 function NotAuthenticated({ onConfirm }: Props) {
   return (
-    <DialogContent className="sm:max-w-[425px]">
+    <DialogContent className="ek-themes-wrapper sm:max-w-[425px]">
       <DialogHeader>
         <DialogTitle>Not Authenticated</DialogTitle>
         <DialogDescription>

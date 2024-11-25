@@ -5,7 +5,7 @@ import { MOCK_COLLECTIONS } from '../mocks/collections'
 interface UseCollectionsOptions {
   limit?: number
   offset?: number
-  sortBy?: 'floorPrice' | 'volumeTraded' | 'createdAt'
+  sortBy?: 'floorPrice' | 'volume' | 'createdAt'
   sortDirection?: 'asc' | 'desc'
 }
 
@@ -26,22 +26,22 @@ export function useCollections(options: UseCollectionsOptions = {}) {
         // 实现排序
         if (options.sortBy) {
           result.sort((a, b) => {
-            let aValue = a[options.sortBy!]||0
-            let bValue = b[options.sortBy!]||0
-            if(options.sortBy==='createdAt'){
-                aValue = new Date(aValue).getTime();
-                bValue = new Date(bValue).getTime();
+            let aValue = a[options.sortBy!] || 0
+            let bValue = b[options.sortBy!] || 0
+            if (options.sortBy === 'createdAt') {
+              aValue = new Date(aValue).getTime()
+              bValue = new Date(bValue).getTime()
             }
-            
-            if (typeof aValue === 'string' && typeof bValue === 'string') {
-              return options.sortDirection === 'desc' 
-                ? bValue.localeCompare(aValue)
-                : aValue.localeCompare(bValue);
-            }
+
+            // if (typeof aValue === 'string' && typeof bValue === 'string') {
+            //   return options.sortDirection === 'desc'
+            //     ? bValue.localeCompare(aValue)
+            //     : aValue.localeCompare(bValue);
+            // }
             if (options.sortDirection === 'desc') {
-              return Number(bValue) - Number(aValue);
+              return Number(bValue) - Number(aValue)
             }
-            return Number(aValue) - Number(bValue);
+            return Number(aValue) - Number(bValue)
           })
         }
 

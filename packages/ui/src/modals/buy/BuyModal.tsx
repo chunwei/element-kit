@@ -78,7 +78,7 @@ export function BuyModal({ trigger }: Props): ReactElement {
               {showWarning ? (
                 <NotAuthenticated onConfirm={handleConfirm} />
               ) : (
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="ek-themes-wrapper sm:max-w-[425px]">
                   <DialogHeader>
                     <DialogTitle>Buy</DialogTitle>
                   </DialogHeader>

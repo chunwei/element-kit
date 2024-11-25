@@ -3,9 +3,9 @@ import { useState } from 'react'
 
 function Collections() {
   const [limit, setLimit] = useState(5)
-  const [sortBy, setSortBy] = useState<
-    'floorPrice' | 'volumeTraded' | 'createdAt'
-  >('floorPrice')
+  const [sortBy, setSortBy] = useState<'floorPrice' | 'volume' | 'createdAt'>(
+    'floorPrice'
+  )
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc')
 
   const { collections, isLoading, error, totalCount, refresh } = useCollections(
@@ -138,7 +138,7 @@ function Collections() {
                   <strong>Floor:</strong> {collection.floorPrice} ETH
                 </div>
                 <div style={{ fontSize: '14px' }}>
-                  <strong>Volume:</strong> {collection.volumeTraded} ETH
+                  <strong>Volume:</strong> {collection.volume} ETH
                 </div>
                 <div style={{ fontSize: '14px' }}>
                   <strong>Items:</strong> {collection.itemCount}
@@ -147,6 +147,7 @@ function Collections() {
                   <strong>Owners:</strong> {collection.ownerCount}
                 </div>
                 <BuyModal trigger={<Button>Buy Now</Button>} />
+                {/* <SweepModal trigger={<Button>Sweep</Button>} /> */}
               </div>
             ))}
       </div>
