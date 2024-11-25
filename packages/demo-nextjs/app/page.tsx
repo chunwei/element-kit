@@ -26,7 +26,7 @@ export default function Home() {
 
   if (!isClient) return null // 或者返回一个加载占位符
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center p-8 pb-12 gap-8 sm:px-44 sm:py-8 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <ElementKitProvider
