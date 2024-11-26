@@ -16,6 +16,7 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { safeLocalStorage } from '@/lib/safe-localstorage'
 
 interface CustomTheme extends ThemeBase {
   name: string
@@ -32,7 +33,7 @@ export function ThemeCustomizer() {
 
   // 加载自定义主题
   useEffect(() => {
-    const stored = localStorage.getItem('custom-themes')
+    const stored = safeLocalStorage.getItem('custom-themes')
     if (stored) {
       try {
         setCustomThemes(JSON.parse(stored))
@@ -80,7 +81,7 @@ export function ThemeCustomizer() {
     const newTheme = { ...customTheme, name }
     const updatedThemes = [...customThemes, newTheme]
     setCustomThemes(updatedThemes)
-    localStorage.setItem('custom-themes', JSON.stringify(updatedThemes))
+    safeLocalStorage.setItem('custom-themes', JSON.stringify(updatedThemes))
 
     setTheme({
       preset: newTheme.id,

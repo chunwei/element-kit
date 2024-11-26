@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 import { Cache, SWRConfig } from 'swr'
+import { safeLocalStorage } from './safe-localstorage'
 // import { version } from '../../package.json'
 
 const BASE_URL = 'https://api.element.market/openapi'
@@ -128,11 +129,11 @@ export const localStorageProvider = (): Cache<any> => {
   try {
     map =
       typeof window !== 'undefined'
-        ? new Map(JSON.parse(localStorage.getItem(CACHE_KEY) || '[]'))
+        ? new Map(JSON.parse(safeLocalStorage.getItem(CACHE_KEY) || '[]'))
         : new Map([])
     cacheTTL =
       typeof window !== 'undefined'
-        ? JSON.parse(localStorage.getItem(CACHE_KEY_TTL) || '{}')
+        ? JSON.parse(safeLocalStorage.getItem(CACHE_KEY_TTL) || '{}')
         : {}
     for (let key in cacheTTL) {
       const ttl: number = cacheTTL[key]
@@ -189,8 +190,8 @@ export const localStorageProvider = (): Cache<any> => {
         }
       }
       const appCache = JSON.stringify(Array.from(map.entries()))
-      localStorage.setItem(CACHE_KEY_TTL, JSON.stringify(cacheTTL))
-      localStorage.setItem(CACHE_KEY, appCache)
+      safeLocalStorage.setItem(CACHE_KEY_TTL, JSON.stringify(cacheTTL))
+      safeLocalStorage.setItem(CACHE_KEY, appCache)
     })
   }
 

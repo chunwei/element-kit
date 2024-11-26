@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { ThemeConfig, ThemeContextType, ThemeMode } from '../types/theme'
 import { ThemeStyle } from '@/themes/ThemeStyle'
+import { safeLocalStorage } from '@/lib/safe-localstorage'
 
 const defaultTheme: ThemeConfig = {
   mode: 'system',
@@ -14,7 +15,7 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 // 获取初始主题模式
 const getInitialTheme = (storageKey: string): ThemeConfig => {
   // 1. 尝试从本地存储获取
-  const stored = localStorage.getItem(storageKey)
+  const stored = safeLocalStorage.getItem(storageKey)
   if (stored) {
     try {
       return JSON.parse(stored)
@@ -66,7 +67,7 @@ export function ThemeProvider({
   const setTheme = (newTheme: Partial<ThemeConfig>) => {
     const updatedTheme = { ...theme, ...newTheme }
     setThemeState(updatedTheme)
-    localStorage.setItem(storageKey, JSON.stringify(updatedTheme))
+    safeLocalStorage.setItem(storageKey, JSON.stringify(updatedTheme))
 
     // 更新 CSS 变量
     // const root = document.documentElement

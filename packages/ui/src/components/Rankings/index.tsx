@@ -25,6 +25,7 @@ import { cn } from '@/lib/utils'
 import { ChainSwitcher } from '../ChainSwitcher'
 import CollectionImage from '../CollectionImage'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { safeLocalStorage } from '@/lib/safe-localstorage'
 
 const levels = RankingLevel.map((level) => ({
   value: level,
@@ -36,7 +37,7 @@ const STORAGE_KEY = 'rankings_preferences'
 // 从 localStorage 获取保存的参数
 const getSavedPreferences = (): Partial<RankingParams> => {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY)
+    const saved = safeLocalStorage.getItem(STORAGE_KEY)
     return saved ? JSON.parse(saved) : {}
   } catch (error) {
     console.error('Error reading from localStorage:', error)
@@ -47,7 +48,7 @@ const getSavedPreferences = (): Partial<RankingParams> => {
 // 保存参数到 localStorage
 const savePreferences = (params: Partial<RankingParams>) => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(params))
+    safeLocalStorage.setItem(STORAGE_KEY, JSON.stringify(params))
   } catch (error) {
     console.error('Error saving to localStorage:', error)
   }

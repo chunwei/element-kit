@@ -11,10 +11,13 @@ import {
   DropdownMenuTrigger
 } from '../ui/dropdown-menu'
 import { Button } from '../ui/button'
+import { safeLocalStorage } from '@/lib/safe-localstorage'
 
 export function ThemeSelector() {
   const { theme, setTheme } = useTheme()
-  const customThemes = JSON.parse(localStorage.getItem('custom-themes') || '[]')
+  const customThemes = JSON.parse(
+    safeLocalStorage.getItem('custom-themes') || '[]'
+  )
   const isDark = theme.mode === 'dark'
   // 应用主题
   const applyTheme = (newTheme: Partial<ThemeConfig>) => {
