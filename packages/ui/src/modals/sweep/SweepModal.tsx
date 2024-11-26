@@ -51,6 +51,7 @@ import { ConnectKitButton, useModal as useConnectKitMoadl } from 'connectkit'
 import Price from '@/components/Price'
 import { elementChains } from '@/constants/chains'
 import { formatUnits, parseUnits } from 'viem'
+import AddressCopy from '@/components/AddressCopy'
 
 type Props = {
   trigger?: ReactNode
@@ -390,7 +391,7 @@ export function SweepModal({
                     <Slider
                       value={[quantity]}
                       onValueChange={handleSliderChange}
-                      min={1}
+                      min={0}
                       max={maxQuantity}
                       step={1}
                       className="flex-1 cursor-pointer"
@@ -476,7 +477,11 @@ export function SweepModal({
                       </div>
                     )}
                     <div className="w-full text-sm">
-                      {hash && <div>Transaction Hash: {hash}</div>}
+                      {hash && (
+                        <div>
+                          Transaction Hash: <AddressCopy address={hash} />
+                        </div>
+                      )}
                       {isConfirming && <div>Waiting for confirmation...</div>}
                       {isConfirmed && <div>Transaction confirmed.</div>}
                       {error && (
