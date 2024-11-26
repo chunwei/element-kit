@@ -1,5 +1,11 @@
 # @element-kit/ui
 
+## 0.1.4
+
+### Patch Changes
+
+- Some minor UI adjustments.
+
 ## 0.1.3
 
 ### Patch Changes
