@@ -1,5 +1,11 @@
 # @element-kit/ui
 
+## 0.1.3
+
+### Patch Changes
+
+- Compatible with SSR and provides additional wallet and chain support.
+
 ## 0.1.2
 
 ### Patch Changes
