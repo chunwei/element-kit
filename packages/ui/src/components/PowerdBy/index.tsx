@@ -13,7 +13,7 @@ export function PoweredBy(){
           href="https://element.market/"
           target="_blank"
         >
-          Element.
+          Element
         </a>
       </div>
     )
