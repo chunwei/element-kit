@@ -1,7 +1,6 @@
 import useSWR from 'swr'
-import { ElementKitContext } from '@/context'
-import { useContext } from 'react'
 import { EncodeParams, EncodeResponse } from '@/types/encode'
+import { useElementKit } from './useElementKit'
 
 interface UseEncodeOptions {
   disabled?: boolean
@@ -25,7 +24,7 @@ export function useEncode(
   params: EncodeParams,
   options: UseEncodeOptions = {}
 ) {
-  const context = useContext(ElementKitContext)
+  const context = useElementKit()
 
   if (!context) throw new Error('ElementKitContext not provided')
 

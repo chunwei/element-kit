@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, createContext, useMemo } from 'react'
+import React, { createContext, useMemo } from 'react'
 import { Toaster } from '@/components/ui/sonner'
 import { ThemeProvider } from './ThemeProvider'
 import { Web3Provider } from './Web3Provider'
@@ -20,14 +20,14 @@ export interface ElementKitProviderProps {
   children: React.ReactNode
   config?: ElementKitConfig
   storagePrefix?: string
-  swrOptions?: ComponentPropsWithoutRef<typeof SWRConfig>['value']
 }
 
 export function ElementKitProvider({
   children,
   config: userConfig,
   storagePrefix = 'element-kit',
-  swrOptions = {}
+  // swrOptions = {},
+  // wagmiConfig
 }: ElementKitProviderProps) {
   console.log('ElementKitProvider', { userConfig })
   const config = useMemo(
@@ -57,9 +57,9 @@ export function ElementKitProvider({
         themeConfig={config?.theme}
         storageKey={`${storagePrefix}-theme`}
       >
-        <Web3Provider>
+        <Web3Provider wagmiConfig={userConfig?.wagmiConfig}>
           <ElementKitContext.Provider value={contextValue}>
-            <SWRConfig value={{ ...swrDefaultOptions, ...swrOptions }}>
+            <SWRConfig value={{ ...swrDefaultOptions, ...userConfig?.swrOptions }}>
               {children}
               <Toaster richColors />
             </SWRConfig>

@@ -1,4 +1,4 @@
-import { WagmiProvider, createConfig, http } from 'wagmi'
+import { WagmiProvider, createConfig, http, Config as WagmiConfig } from 'wagmi'
 import {
   arbitrum,
   bsc,
@@ -84,10 +84,10 @@ const config = createConfig(
 
 const queryClient = new QueryClient()
 
-export const Web3Provider = ({ children }: { children: React.ReactNode }) => {
+export const Web3Provider = ({ children, wagmiConfig }: { children: React.ReactNode, wagmiConfig?: WagmiConfig }) => {
   const { theme } = useTheme()
   return (
-    <WagmiProvider config={config}>
+    <WagmiProvider config={{ ...config, ...wagmiConfig }}>
       <QueryClientProvider client={queryClient}>
         <ConnectKitProvider {...(theme && { mode: theme.mode as any })}>
           {children}

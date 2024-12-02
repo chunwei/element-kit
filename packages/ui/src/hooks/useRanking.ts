@@ -1,10 +1,10 @@
 import useSWR from 'swr'
-import { ElementKitContext } from '@/context'
-import { useContext, useRef } from 'react'
+import { useRef } from 'react'
 import { RankingParams, RankingResponse } from '@/types/collection'
+import { useElementKit } from './useElementKit'
 
 export function useRanking(params: RankingParams) {
-  const context = useContext(ElementKitContext)
+  const context = useElementKit()
   const accumulatedList = useRef<RankingResponse['data']['rankingList']>([])
 
   if (!context) throw new Error('ElementKitContext 未提供')

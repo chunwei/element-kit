@@ -1,7 +1,7 @@
 import useSWR from 'swr'
-import { ElementKitContext } from '@/context'
-import { useContext, useRef } from 'react'
+import { useRef } from 'react'
 import { Order, OrdersParams, OrdersResponse } from '@/types/order'
+import { useElementKit } from './useElementKit'
 
 interface UseOrdersOptions {
   disabled?: boolean
@@ -11,7 +11,7 @@ export function useOrders(
   params: OrdersParams,
   options: UseOrdersOptions = {}
 ) {
-  const context = useContext(ElementKitContext)
+  const context = useElementKit()
   const accumulatedOrders = useRef<Order[]>([])
 
   if (!context) throw new Error('ElementKitContext 未提供')
