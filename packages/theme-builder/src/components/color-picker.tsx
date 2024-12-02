@@ -9,7 +9,7 @@ function ColorPicker({
   onChange: (v: string) => void
 }) {
   return (
-    <div className="flex items-center gap-2 px-1 border rounded-md">
+    <div className="flex items-center gap-2 p-1 border rounded-md">
       <input
         type="color"
         value={hslToHex(value)}
@@ -20,7 +20,7 @@ function ColorPicker({
       <Input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1 h-8 border-none"
+        className="flex-1 h-6 border-none shadow-none"
       />
     </div>
   )

@@ -1,18 +1,6 @@
 import * as React from 'react'
-import {
-  ArchiveX,
-  ChevronRight,
-  Command,
-  File,
-  Inbox,
-  Moon,
-  Send,
-  Squircle,
-  Sun,
-  Trash2
-} from 'lucide-react'
+import { ChevronRight, Command, Moon, Palette, Sun } from 'lucide-react'
 
-import { NavUser } from '@/components/nav-user'
 import { Label } from '@/components/ui/label'
 import {
   Sidebar,
@@ -22,7 +10,6 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -95,7 +82,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenuButton tooltip={baseKey}>
                   <Label className="flex-1 flex items-center justify-between pr-6">
                     {capitalizeFirstLetter(baseKey)}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 group-data-[state=open]/collapsible:hidden">
                       {colors[fgKey] && (
                         <div
                           className="w-4 h-4 border rounded "
@@ -115,7 +102,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
               <CollapsibleContent>
                 <SidebarMenuSub>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-1">
                     {/* background */}
                     <SidebarMenuSubItem key={'Background Color'}>
                       <SidebarMenuSubButton asChild>
@@ -136,7 +123,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <SidebarMenuSubButton asChild>
                           <>
                             <Label className="text-muted-foreground text-xs">
-                              {'Foreground'}
+                              {'Text Color'}
                             </Label>
                             <ColorPicker
                               value={colors[fgKey]}
@@ -195,7 +182,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarGroup>
             <SidebarGroupContent className="px-1.5 md:px-0">
               <SidebarMenu>
-                {THEMEPRESETS.slice(0, 10).map((item) => (
+                {THEMEPRESETS.map((item) => (
                   <SidebarMenuItem key={item.id}>
                     <SidebarMenuButton
                       tooltip={{
@@ -207,13 +194,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         setOpen(true)
                       }}
                       isActive={activeTheme.name === item.name}
-                      className="px-2.5 md:px-2"
+                      // className="p-2 md:p-2"
                     >
-                      {/* <item.icon /> */}
-                      <Squircle
+                      <Palette
                         className="rounded-md"
                         style={{
-                          color: `hsl(${item.colors.dark.primary})`
+                          color: `hsl(${item.colors[globalMode === 'dark' ? 'dark' : 'light'].primary})`
                         }}
                       />
                       <span>{item.name}</span>
