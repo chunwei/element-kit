@@ -1,5 +1,11 @@
 # @element-kit/ui
 
+## 0.1.8
+
+### Patch Changes
+
+- ElementKitContext and config type definition
+
 ## 0.1.7
 
 ### Patch Changes

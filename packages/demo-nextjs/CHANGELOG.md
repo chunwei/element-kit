@@ -1,5 +1,13 @@
 # demo-nextjs
 
+## 0.1.4
+
+### Patch Changes
+
+- ElementKitContext and config type definition
+- Updated dependencies
+  - @element-kit/ui@0.1.8
+
 ## 0.1.3
 
 ### Patch Changes
