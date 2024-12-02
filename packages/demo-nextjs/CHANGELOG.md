@@ -1,5 +1,13 @@
 # demo-nextjs
 
+## 0.1.3
+
+### Patch Changes
+
+- theme-builder
+- Updated dependencies
+  - @element-kit/ui@0.1.7
+
 ## 0.1.2
 
 ### Patch Changes

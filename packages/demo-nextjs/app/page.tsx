@@ -55,9 +55,13 @@ export default function Home() {
                 </a>
               </div>
               <div className="flex space-x-4 items-center">
+                <a
+                  href="https://element-kit-theme-builder.vercel.app/"
+                  target="_blank"
+                >
+                  Theme Builder
+                </a>
                 <ThemeSelector /> {/* 简单的下拉选择器 */}
-                <AdvancedThemeSelector /> {/* 高级主题管理器 */}
-                <ThemeCustomizer />
                 <ThemeToggle />
                 <ConnectKitButton />
               </div>

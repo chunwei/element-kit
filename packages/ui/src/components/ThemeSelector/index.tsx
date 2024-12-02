@@ -55,12 +55,12 @@ export function ThemeSelector() {
               />
             )}
           </div>
-          <span>主题</span>
+          <span>Theme</span>
         </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="ek-w-[240px]">
-        <DropdownMenuLabel>预设主题</DropdownMenuLabel>
+        <DropdownMenuLabel>Preset Themes</DropdownMenuLabel>
         {THEMEPRESETS.map((preset) => (
           <DropdownMenuItem
             key={preset.id}
@@ -84,7 +84,7 @@ export function ThemeSelector() {
         {customThemes.length > 0 && (
           <>
             <DropdownMenuSeparator />
-            <DropdownMenuLabel>自定义主题</DropdownMenuLabel>
+            <DropdownMenuLabel>Custom Themes</DropdownMenuLabel>
             {customThemes.map((customTheme: any) => (
               <DropdownMenuItem
                 key={customTheme.id}

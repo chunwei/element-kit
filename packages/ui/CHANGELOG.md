@@ -1,5 +1,11 @@
 # @element-kit/ui
 
+## 0.1.7
+
+### Patch Changes
+
+- theme-builder
+
 ## 0.1.6
 
 ### Patch Changes
