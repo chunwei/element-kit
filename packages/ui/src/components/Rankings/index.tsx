@@ -133,10 +133,10 @@ export function Rankings() {
 
   return (
     <div className="ek-space-y-4">
-      <div className="ek-flex ek-items-center ek-gap-4">
+      <div className="ek-flex ek-items-center ek-justify-start ek-gap-4">
         <Label className="ek-font-bold">Ranking</Label>
         <Select value={params.sortType} onValueChange={handleSortByChange}>
-          <SelectTrigger className="ek-w-[180px]">
+          <SelectTrigger className="!ek-w-[180px]">
             <SelectValue placeholder="选择排序" />
           </SelectTrigger>
           <SelectContent>
@@ -148,7 +148,7 @@ export function Rankings() {
           </SelectContent>
         </Select>
         <Select value={params.level} onValueChange={handleLevelChange}>
-          <SelectTrigger className="ek-w-[180px]">
+          <SelectTrigger className="!ek-w-[180px]">
             <SelectValue placeholder="选择时间范围" />
           </SelectTrigger>
           <SelectContent>
@@ -190,7 +190,9 @@ export function Rankings() {
                     className="ek-w-8 ek-h-8 ek-rounded-full"
                   /> */}
                   <div className="ek-min-w-0">
-                    <p className="ek-font-semibold ek-truncate">{collection.name}</p>
+                    <p className="ek-font-semibold ek-truncate">
+                      {collection.name}
+                    </p>
                     {/* <p className="ek-text-sm ek-text-gray-500">排名 #{realIndex + 1}</p> */}
                   </div>
                 </div>

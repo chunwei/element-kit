@@ -17,7 +17,7 @@ function App() {
     <ElementKitProvider
       config={{
         theme: {
-          preset: 'daylight',
+          preset: 'green',
           mode: 'system'
           // colors: { light: {}, dark: {} }
         },
