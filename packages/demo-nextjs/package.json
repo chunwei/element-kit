@@ -1,6 +1,6 @@
 {
   "name": "demo-nextjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@element-kit/ui": "^0.1.3",
+    "@element-kit/ui": "^0.1.5",
     "next": "15.0.3",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
