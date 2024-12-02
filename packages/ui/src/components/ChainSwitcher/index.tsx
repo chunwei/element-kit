@@ -28,8 +28,8 @@ export const ChainSwitcher: FC<ChainSwitcherProps> = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex gap-2" disabled={disabled}>
-          <span className="w-4 h-4">
+        <Button variant="outline" className="ek-flex ek-gap-2" disabled={disabled}>
+          <span className="ek-w-4 ek-h-4">
             {currentChain
               ? chainIcons[
                   elementChains[currentChain].chainId as keyof typeof chainIcons
@@ -40,15 +40,15 @@ export const ChainSwitcher: FC<ChainSwitcherProps> = ({
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="w-[200px]">
+      <DropdownMenuContent align="end" className="ek-w-[200px]">
         {SUPPORTED_CHAINS.map((chain) => (
           <DropdownMenuItem
             key={chain}
             onClick={() => onChainChange(chain)}
-            className="flex items-center justify-between"
+            className="ek-flex ek-items-center ek-justify-between"
           >
-            <div className="flex items-center justify-between gap-3">
-              <span className="w-4 h-4">
+            <div className="ek-flex ek-items-center ek-justify-between ek-gap-3">
+              <span className="ek-w-4 ek-h-4">
                 {
                   chainIcons[
                     elementChains[chain]?.chainId as keyof typeof chainIcons
@@ -57,7 +57,7 @@ export const ChainSwitcher: FC<ChainSwitcherProps> = ({
               </span>
               <span>{chain.toUpperCase()}</span>
             </div>
-            {currentChain === chain && <Check className="h-4 w-4" />}
+            {currentChain === chain && <Check className="ek-h-4 ek-w-4" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

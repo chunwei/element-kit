@@ -11,8 +11,8 @@ const KeyValueLine = (props: Props) => {
     <div
       className={cn('flex items-center justify-between space-x-4', className)}
     >
-      <div className="text-muted-foreground">{k}</div>
-      <div className="font-semibold">{v}</div>
+      <div className="ek-text-muted-foreground">{k}</div>
+      <div className="ek-font-semibold">{v}</div>
     </div>
   )
 }

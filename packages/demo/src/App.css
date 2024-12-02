@@ -10,9 +10,23 @@
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+    justify-content: space-between;
   padding: 16px;
+  width: 100%;
 }
 
+.logos-bar .left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logos-bar .right {
+  display: flex;
+  gap: 16px;
+  align-items: center
+}
 .logo {
   height: 2em;
   padding: 4px;

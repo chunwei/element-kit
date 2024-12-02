@@ -95,7 +95,7 @@ export function ThemeCustomizer() {
       <DialogTrigger asChild>
         <Button variant="outline">自定义主题</Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="ek-max-w-2xl">
         <DialogHeader>
           <DialogTitle>主题定制</DialogTitle>
         </DialogHeader>
@@ -108,34 +108,34 @@ export function ThemeCustomizer() {
           </TabsList>
 
           <TabsContent value="presets">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="ek-grid ek-grid-cols-3 ek-gap-4">
               {THEMEPRESETS.map((preset) => (
                 <Button
                   key={preset.id}
                   variant={selectedPreset === preset.id ? 'default' : 'outline'}
                   onClick={() => handlePresetSelect(preset.id)}
-                  className="h-auto p-2"
+                  className="ek-h-auto ek-p-2"
                 >
-                  <div className="space-y-2">
-                    <div className="text-sm font-semibold">{preset.name}</div>
-                    <div className="grid grid-cols-12 gap-1">
+                  <div className="ek-space-y-2">
+                    <div className="ek-text-sm ek-font-semibold">{preset.name}</div>
+                    <div className="ek-grid ek-grid-cols-12 ek-gap-1">
                       {Object.values(preset.colors[isDark ? 'dark' : 'light'])
                         // .slice(0, 5)
                         .map((color, i) => (
                           <div
                             key={i}
-                            className="h-3 w-3 border"
+                            className="ek-h-3 ek-w-3 ek-border"
                             style={{ background: `hsl(${color})` }}
                           />
                         ))}
                     </div>
-                    {/* <div className="grid grid-cols-12 gap-1">
+                    {/* <div className="ek-grid ek-grid-cols-12 ek-gap-1">
                       {Object.values(preset.colors.dark)
                         // .slice(0, 5)
                         .map((color, i) => (
                           <div
                             key={i}
-                            className="h-3 w-3 border"
+                            className="ek-h-3 ek-w-3 ek-border"
                             style={{ background: `hsl(${color})` }}
                           />
                         ))}
@@ -148,15 +148,15 @@ export function ThemeCustomizer() {
 
           <TabsContent value="customize">
             {customTheme && (
-              <ScrollArea className="h-[500px]">
-                <div className="space-y-6 p-2">
-                  <div className="flex space-x-4 p-2">
-                    <div className="space-y-4">
+              <ScrollArea className="ek-h-[500px]">
+                <div className="ek-space-y-6 ek-p-2">
+                  <div className="ek-flex ek-space-x-4 ek-p-2">
+                    <div className="ek-space-y-4">
                       <Label>亮色模式颜色</Label>
                       {Object.entries(customTheme.colors.light || {}).map(
                         ([key, value]) => (
-                          <div key={key} className="flex items-center gap-4">
-                            <Label className="w-32">{key}</Label>
+                          <div key={key} className="ek-flex ek-items-center ek-gap-4">
+                            <Label className="ek-w-32">{key}</Label>
                             <ColorPicker
                               value={value}
                               onChange={(v) =>
@@ -176,19 +176,19 @@ export function ThemeCustomizer() {
                                   e.target.value
                                 )
                               }
-                              className="flex-1"
+                              className="ek-flex-1"
                             />
                           </div>
                         )
                       )}
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="ek-space-y-4">
                       <Label>暗色模式颜色</Label>
                       {Object.entries(customTheme.colors.dark || {}).map(
                         ([key, value]) => (
-                          <div key={key} className="flex items-center gap-4">
-                            {/* <Label className="w-32">{key}</Label> */}
+                          <div key={key} className="ek-flex ek-items-center ek-gap-4">
+                            {/* <Label className="ek-w-32">{key}</Label> */}
                             <ColorPicker
                               value={value}
                               onChange={(v) =>
@@ -204,7 +204,7 @@ export function ThemeCustomizer() {
                                   e.target.value
                                 )
                               }
-                              className="flex-1"
+                              className="ek-flex-1"
                             />
                           </div>
                         )
@@ -212,7 +212,7 @@ export function ThemeCustomizer() {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="ek-space-y-4">
                     <Label>圆角</Label>
                     <RadiusSelector
                       value={customTheme.radius}
@@ -222,7 +222,7 @@ export function ThemeCustomizer() {
                     />
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="ek-flex ek-items-center ek-gap-4">
                     <Input
                       placeholder="主题名称"
                       value={customTheme.name}
@@ -243,7 +243,7 @@ export function ThemeCustomizer() {
           </TabsContent>
 
           <TabsContent value="custom">
-            <div className="grid grid-cols-3 gap-4">
+            <div className="ek-grid ek-grid-cols-3 ek-gap-4">
               {customThemes.map((custom) => (
                 <Button
                   key={custom.id}
@@ -255,11 +255,11 @@ export function ThemeCustomizer() {
                       radius: custom.radius
                     })
                   }
-                  className="h-auto p-4"
+                  className="ek-h-auto ek-p-4"
                 >
-                  <div className="space-y-2">
-                    <div className="text-sm font-semibold">{custom.name}</div>
-                    <div className="grid grid-cols-12 gap-1">
+                  <div className="ek-space-y-2">
+                    <div className="ek-text-sm ek-font-semibold">{custom.name}</div>
+                    <div className="ek-grid ek-grid-cols-12 ek-gap-1">
                       {Object.values(
                         custom.colors[isDark ? 'dark' : 'light'] || {}
                       )
@@ -267,18 +267,18 @@ export function ThemeCustomizer() {
                         .map((color, i) => (
                           <div
                             key={i}
-                            className="h-3 w-3 border"
+                            className="ek-h-3 ek-w-3 ek-border"
                             style={{ background: `hsl(${color})` }}
                           />
                         ))}
                     </div>
-                    {/* <div className="grid grid-cols-12 gap-1">
+                    {/* <div className="ek-grid ek-grid-cols-12 ek-gap-1">
                       {Object.values(custom.colors.dark || {})
                         // .slice(0, 5)
                         .map((color, i) => (
                           <div
                             key={i}
-                            className="h-3 w-3 border"
+                            className="ek-h-3 ek-w-3 ek-border"
                             style={{ background: `hsl(${color})` }}
                           />
                         ))}

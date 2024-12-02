@@ -132,11 +132,11 @@ export function Rankings() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-4">
-        <Label className="font-bold">Ranking</Label>
+    <div className="ek-space-y-4">
+      <div className="ek-flex ek-items-center ek-gap-4">
+        <Label className="ek-font-bold">Ranking</Label>
         <Select value={params.sortType} onValueChange={handleSortByChange}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="ek-w-[180px]">
             <SelectValue placeholder="选择排序" />
           </SelectTrigger>
           <SelectContent>
@@ -148,7 +148,7 @@ export function Rankings() {
           </SelectContent>
         </Select>
         <Select value={params.level} onValueChange={handleLevelChange}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="ek-w-[180px]">
             <SelectValue placeholder="选择时间范围" />
           </SelectTrigger>
           <SelectContent>
@@ -162,57 +162,57 @@ export function Rankings() {
         <ChainSwitcher currentChain={chain} onChainChange={handleChainChange} />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="ek-grid ek-grid-cols-1 md:ek-grid-cols-3 lg:ek-grid-cols-5 ek-gap-4">
         {currentPageData.map(({ collectionRank }) => {
           const { collection, statsToken } = collectionRank
           return (
-            <Card key={collection.id} className="overflow-hidden">
-              <div className="aspect-video w-full overflow-hidden">
+            <Card key={collection.id} className="ek-overflow-hidden">
+              <div className="ek-aspect-video ek-w-full ek-overflow-hidden">
                 <CollectionImage
                   collection={collection}
-                  className="w-full h-full"
+                  className="ek-w-full ek-h-full"
                 />
               </div>
-              <CardContent className="p-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <Avatar className="w-8 h-8 rounded-full">
+              <CardContent className="ek-p-4 ek-space-y-2">
+                <div className="ek-flex ek-items-center ek-gap-2">
+                  <Avatar className="ek-w-8 ek-h-8 ek-rounded-full">
                     <AvatarImage
                       src={collection.imageUrl}
                       alt={collection.name}
                     />
-                    <AvatarFallback className="rounded-md">
+                    <AvatarFallback className="ek-rounded-md">
                       {collection.name?.substr(0, 2)}
                     </AvatarFallback>
                   </Avatar>
                   {/* <img
                     src={collection.imageUrl}
                     alt={collection.name}
-                    className="w-8 h-8 rounded-full"
+                    className="ek-w-8 ek-h-8 ek-rounded-full"
                   /> */}
-                  <div className="min-w-0">
-                    <p className="font-semibold truncate">{collection.name}</p>
-                    {/* <p className="text-sm text-gray-500">排名 #{realIndex + 1}</p> */}
+                  <div className="ek-min-w-0">
+                    <p className="ek-font-semibold ek-truncate">{collection.name}</p>
+                    {/* <p className="ek-text-sm ek-text-gray-500">排名 #{realIndex + 1}</p> */}
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-2 text-sm">
+                <div className="ek-grid ek-grid-cols-2 ek-gap-2 ek-text-sm">
                   <div>
-                    <p className="text-gray-500 text-xs">底价</p>
+                    <p className="ek-text-gray-500 ek-text-xs">底价</p>
                     <p>
                       {collectionRank.floorPrice.toFixed(4)} {statsToken.name}
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-500  text-xs">交易量</p>
+                    <p className="ek-text-gray-500 ek-text-xs">交易量</p>
                     <p>
                       {collectionRank.volume.toFixed(2)} {statsToken.name}
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-500  text-xs">持有人数</p>
+                    <p className="ek-text-gray-500 ek-text-xs">持有人数</p>
                     <p>{collectionRank.ownerCount}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500  text-xs">变化</p>
+                    <p className="ek-text-gray-500 ek-text-xs">变化</p>
                     <p
                       className={
                         collectionRank.volumeRatio > 0
@@ -226,9 +226,9 @@ export function Rankings() {
                   </div>
                 </div>
               </CardContent>
-              <CardFooter className="p-4 pt-0">
+              <CardFooter className="ek-p-4 ek-pt-0">
                 <SweepModal
-                  trigger={<Button className="w-full">Sweep</Button>}
+                  trigger={<Button className="ek-w-full">Sweep</Button>}
                   contractAddress={collection.contracts?.[0]?.address}
                   chain={collection.contracts?.[0]?.blockChain.chain}
                   collection={collection}
@@ -239,7 +239,7 @@ export function Rankings() {
         })}
       </div>
 
-      <div className="flex justify-end mt-4">
+      <div className="ek-flex ek-justify-end ek-mt-4">
         <Pagination>
           <PaginationContent>
             <PaginationItem>
@@ -313,7 +313,7 @@ export function Rankings() {
         </Pagination>
       </div>
 
-      {isLoading && <div className="text-center">加载中...</div>}
+      {isLoading && <div className="ek-text-center">加载中...</div>}
     </div>
   )
 }

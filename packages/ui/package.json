@@ -23,6 +23,7 @@
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist",
     "add:component": "pnpm dlx shadcn@latest add",
+    "tailwind": "tailwindcss build -i src/styles/globals.css -o dist/output.css",
     "test": "vitest"
   },
   "publishConfig": {

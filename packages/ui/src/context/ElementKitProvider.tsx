@@ -29,6 +29,7 @@ export function ElementKitProvider({
   storagePrefix = 'element-kit',
   swrOptions = {}
 }: ElementKitProviderProps) {
+  console.log('ElementKitProvider', { userConfig })
   const config = useMemo(
     () => ({
       ...defaultConfig,
@@ -53,7 +54,7 @@ export function ElementKitProvider({
   return (
     <ElementKitErrorBoundary>
       <ThemeProvider
-        // defaultConfig={config.theme}
+        themeConfig={config?.theme}
         storageKey={`${storagePrefix}-theme`}
       >
         <Web3Provider>

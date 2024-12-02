@@ -13,7 +13,7 @@ export function ThemeStyle() {
   return theme.colors ? (
     <style>
       {`
-        .ek-themes-wrapper,
+        #element-kit-root.ek-themes-wrapper,
         [data-chart] {
         --radius:${theme.radius}rem;
         ${Object.entries(theme.colors.light ?? {})
@@ -23,7 +23,8 @@ export function ThemeStyle() {
           .join('\n')}
         }
 
-        .dark .ek-themes-wrapper,
+        .dark #element-kit-root.ek-themes-wrapper,
+        #element-kit-root.ek-themes-wrapper.dark ,
         .dark [data-chart] {
         --radius:${theme.radius}rem;
         ${Object.entries(theme.colors.dark ?? {})

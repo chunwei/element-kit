@@ -1,4 +1,3 @@
-import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 
@@ -17,8 +16,8 @@ interface RadiusSelectorProps {
 
 export function RadiusSelector({ value, onChange }: RadiusSelectorProps) {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center gap-2">
+    <div className="ek-space-y-4">
+      <div className="ek-flex ek-items-center ek-gap-2">
         {RADIUS_PRESETS.map((preset) => (
           <Button
             key={preset.value}
@@ -29,7 +28,7 @@ export function RadiusSelector({ value, onChange }: RadiusSelectorProps) {
           </Button>
         ))}
         {/* </div>
-      <div className="flex items-center gap-4"> */}
+      <div className="ek-flex ek-items-center ek-gap-4"> */}
         {/* <Label>自定义圆角</Label> */}
         <Input
           type="number"

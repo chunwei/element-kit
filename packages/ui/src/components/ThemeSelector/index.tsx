@@ -26,7 +26,7 @@ export function ThemeSelector() {
 
   // 获取主题预览色块
   const ThemePreview = ({ colors }: { colors: Record<string, string> }) => (
-    <div className="flex gap-1">
+    <div className="ek-flex ek-gap-1">
       {
         // Object.values(colors).slice(0, 5)
         ['primary']
@@ -34,7 +34,7 @@ export function ThemeSelector() {
           .map((color, i) => (
             <div
               key={i}
-              className="h-4 w-4 rounded-full"
+              className="ek-h-4 ek-w-4 ek-rounded-full"
               style={{ background: `hsl(${color})` }}
             />
           ))
@@ -45,8 +45,8 @@ export function ThemeSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="flex gap-2">
-          <div className="flex gap-1">
+        <Button variant="outline" className="ek-flex ek-gap-2">
+          <div className="ek-flex ek-gap-1">
             {THEMEPRESETS.find((t) => t.id === theme.preset)?.colors.light && (
               <ThemePreview
                 colors={
@@ -59,7 +59,7 @@ export function ThemeSelector() {
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="w-[240px]">
+      <DropdownMenuContent align="end" className="ek-w-[240px]">
         <DropdownMenuLabel>预设主题</DropdownMenuLabel>
         {THEMEPRESETS.map((preset) => (
           <DropdownMenuItem
@@ -71,13 +71,13 @@ export function ThemeSelector() {
                 radius: preset.radius
               })
             }
-            className="flex items-center justify-between"
+            className="ek-flex ek-items-center ek-justify-between"
           >
-            <div className="flex items-center gap-2">
+            <div className="ek-flex ek-items-center ek-gap-2">
               <ThemePreview colors={preset.colors[isDark ? 'dark' : 'light']} />
               <span>{preset.name}</span>
             </div>
-            {theme.preset === preset.id && <Check className="h-4 w-4" />}
+            {theme.preset === preset.id && <Check className="ek-h-4 ek-w-4" />}
           </DropdownMenuItem>
         ))}
 
@@ -95,14 +95,14 @@ export function ThemeSelector() {
                     radius: customTheme.radius
                   })
                 }
-                className="flex items-center justify-between"
+                className="ek-flex ek-items-center ek-justify-between"
               >
-                <div className="flex items-center gap-2">
+                <div className="ek-flex ek-items-center ek-gap-2">
                   <ThemePreview colors={customTheme.colors.light} />
                   <span>{customTheme.name}</span>
                 </div>
                 {theme.preset === customTheme.id && (
-                  <Check className="h-4 w-4" />
+                  <Check className="ek-h-4 ek-w-4" />
                 )}
               </DropdownMenuItem>
             ))}

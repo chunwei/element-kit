@@ -1,8 +1,10 @@
-import * as React from "react"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { X } from "lucide-react"
+'use client'
 
-import { cn } from "@/lib/utils"
+import * as React from 'react'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { X } from 'lucide-react'
+
+import { cn } from '@/lib/utils'
 
 const Dialog = DialogPrimitive.Root
 
@@ -19,7 +21,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      'ek-fixed ek-inset-0 ek-z-50 ek-bg-black/80 ek- data-[state=open]:ek-animate-in data-[state=closed]:ek-animate-out data-[state=closed]:ek-fade-out-0 data-[state=open]:ek-fade-in-0',
       className
     )}
     {...props}
@@ -29,22 +31,32 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay />
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    portalContainer?: HTMLElement | null
+    overlayClass?: string
+  }
+>(({ className, children, portalContainer, overlayClass, ...props }, ref) => (
+  <DialogPortal container={portalContainer}>
+    <DialogOverlay
+      className={cn(
+        'shadcn-dialog-overlay',
+        overlayClass,
+        portalContainer ? 'ek-absolute' : 'ek-fixed'
+      )}
+    />
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        portalContainer ? 'ek-absolute' : 'ek-fixed',
+        'ek-left-[50%] ek-top-[50%] ek-z-50 ek-grid ek-w-full ek-max-w-lg ek-translate-x-[-50%] ek-translate-y-[-50%] ek-gap-4 ek-border ek-bg-background ek-p-6 ek-shadow-lg ek-duration-200 data-[state=open]:ek-animate-in data-[state=closed]:ek-animate-out data-[state=closed]:ek-fade-out-0 data-[state=open]:ek-fade-in-0 data-[state=closed]:ek-zoom-out-95 data-[state=open]:ek-zoom-in-95 data-[state=closed]:ek-slide-out-to-left-1/2 data-[state=closed]:ek-slide-out-to-top-[48%] data-[state=open]:ek-slide-in-from-left-1/2 data-[state=open]:ek-slide-in-from-top-[48%] sm:ek-rounded-lg',
         className
       )}
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
+      <DialogPrimitive.Close className="ek-absolute ek-right-4 ek-top-4 ek-rounded-sm ek-opacity-70 ek-ring-offset-background ek-transition-opacity hover:ek-opacity-100 focus:ek-outline-none focus:ek-ring-2 focus:ek-ring-ring focus:ek-ring-offset-2 disabled:ek-pointer-events-none data-[state=open]:ek-bg-accent data-[state=open]:ek-text-muted-foreground">
+        <X className="ek-h-4 ek-w-4" />
+        <span className="ek-sr-only">Close</span>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   </DialogPortal>
@@ -57,13 +69,13 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
+      'ek-flex ek-flex-col ek-space-y-1.5 ek-text-center sm:ek-text-left',
       className
     )}
     {...props}
   />
 )
-DialogHeader.displayName = "DialogHeader"
+DialogHeader.displayName = 'DialogHeader'
 
 const DialogFooter = ({
   className,
@@ -71,13 +83,13 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      'ek-flex ek-flex-col-reverse sm:ek-flex-row sm:ek-justify-end sm:ek-space-x-2',
       className
     )}
     {...props}
   />
 )
-DialogFooter.displayName = "DialogFooter"
+DialogFooter.displayName = 'DialogFooter'
 
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
@@ -86,7 +98,7 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
+      'ek-text-lg ek-font-semibold ek-leading-none ek-tracking-tight',
       className
     )}
     {...props}
@@ -100,7 +112,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn('ek-text-sm ek-text-muted-foreground', className)}
     {...props}
   />
 ))
@@ -116,5 +128,5 @@ export {
   DialogHeader,
   DialogFooter,
   DialogTitle,
-  DialogDescription,
+  DialogDescription
 }

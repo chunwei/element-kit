@@ -52,12 +52,18 @@ import Price from '@/components/Price'
 import { elementChains } from '@/constants/chains'
 import { formatUnits, parseUnits } from 'viem'
 import AddressCopy from '@/components/AddressCopy'
+import { MOCK_ORDERS } from '@/mocks/orders'
+import { useTheme } from '@/hooks/useTheme'
 
 type Props = {
+  portalContainer?: HTMLElement | null
   trigger?: ReactNode
   collection: Collection
   contractAddress: string
   chain: string
+  overlayClass?: string
+  defaultOpen?: boolean
+  dev?: boolean // 开发模式
 }
 
 // 提取价格显示组件并使用 memo
@@ -86,12 +92,28 @@ const PriceDisplay = memo(
 PriceDisplay.displayName = 'PriceDisplay'
 
 export function SweepModal({
+  portalContainer,
+  overlayClass,
+  dev = false,
   trigger,
   collection,
   contractAddress,
-  chain
+  chain,
+  defaultOpen = false
 }: Props): ReactElement {
-  const [open, setOpen] = useState(false)
+  const { themeWrapper } = useTheme()
+  const [dialogContainer, setDialogContainer] = useState(
+    portalContainer || themeWrapper
+  )
+
+  useEffect(() => {
+    console.log({ portalContainer, themeWrapper })
+    if (portalContainer || themeWrapper) {
+      setDialogContainer(portalContainer || themeWrapper)
+    }
+  }, [portalContainer, themeWrapper])
+
+  const [open, setOpen] = useState(defaultOpen)
   const [quantity, setQuantity] = useState(1)
 
   const {
@@ -106,7 +128,7 @@ export function SweepModal({
       side: '1'
     },
     {
-      disabled: !open
+      disabled: !open || dev
     }
   )
   // asset chain info
@@ -134,7 +156,9 @@ export function SweepModal({
   })
   const nativeOrders = useMemo(() => {
     return (
-      orders?.filter((order) => order.paymentToken === NativeTokenAddress) || []
+      (dev ? MOCK_ORDERS : orders)?.filter(
+        (order) => order.paymentToken === NativeTokenAddress
+      ) || []
     )
   }, [orders, quantity])
 
@@ -162,7 +186,7 @@ export function SweepModal({
       }))
     },
     {
-      disabled: !address || selectedOrders.length === 0
+      disabled: dev || !address || selectedOrders.length === 0
     }
   )
 
@@ -209,7 +233,7 @@ export function SweepModal({
   useEffect(() => {
     let intervalId: NodeJS.Timeout
 
-    if (open) {
+    if (open && !dev) {
       intervalId = setInterval(() => {
         mutate()
       }, 15000)
@@ -220,7 +244,7 @@ export function SweepModal({
         clearInterval(intervalId)
       }
     }
-  }, [open, mutate])
+  }, [open, dev, mutate])
 
   const maxQuantity = Math.min(30, nativeOrders?.length || 1)
 
@@ -326,27 +350,29 @@ export function SweepModal({
   const handleDialogOpenChange = useCallback(
     (open: boolean) => {
       // 当connectKitMoadl 打开的情况点击overlay不关闭弹窗
-      setOpen(open || connectKitMoadlOpen)
+      setOpen(open || connectKitMoadlOpen || dev)
     },
     [connectKitMoadlOpen]
   )
 
   return (
     <SweepModalRenderer
-      open={false}
+      open={open}
       onConnectWallet={function (): void {
         throw new Error('Function not implemented.')
       }}
     >
       {({}) => (
-        <Dialog open={open} onOpenChange={handleDialogOpenChange}>
+        <Dialog open={open} onOpenChange={handleDialogOpenChange} modal={!dev}>
           <DialogTrigger asChild>
             {trigger ? trigger : <Button variant="outline">Sweep</Button>}
           </DialogTrigger>
 
           <DialogContent
-            className="ek-themes-wrapper sm:max-w-[425px]"
+            className="ek-themes-wrapper sm:ek-max-w-[425px]"
             aria-describedby={undefined}
+            portalContainer={dialogContainer}
+            overlayClass={overlayClass}
           >
             <DialogHeader>
               <DialogTitle>Sweep</DialogTitle>
@@ -354,47 +380,47 @@ export function SweepModal({
             <CollectionItem collection={collection} />
 
             {isLoadingOrders ? (
-              <div className="flex flex-col items-center justify-center pb-16 gap-4">
+              <div className="ek-flex ek-flex-col ek-items-center ek-justify-center ek-pb-16 ek-gap-4">
                 <Spinner size="lg" />
-                <p className="text-muted-foreground">Loading orders ...</p>
+                <p className="ek-text-muted-foreground">Loading orders ...</p>
               </div>
             ) : !nativeOrders || nativeOrders.length === 0 ? (
-              <div className="flex flex-col items-center justify-center pb-16 gap-4">
-                <p className="text-muted-foreground">
+              <div className="ek-flex ek-flex-col ek-items-center ek-justify-center ek-pb-16 ek-gap-4">
+                <p className="ek-text-muted-foreground">
                   No orders available, please try again later.
                 </p>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={handleRefresh}
-                  className="gap-2"
+                  className="ek-gap-2"
                 >
-                  <RefreshCw className="h-4 w-4" />
+                  <RefreshCw className="ek-h-4 ek-w-4" />
                   Refresh
                 </Button>
               </div>
             ) : (
               <>
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center justify-between ">
-                    <span className="font-semibold text-sm ">
+                <div className="ek-flex ek-flex-col ek-gap-4">
+                  <div className="ek-flex ek-items-center ek-justify-between">
+                    <span className="ek-font-semibold ek-text-sm">
                       Quantity
-                      <span className="text-muted-foreground text-xs ml-3">
+                      <span className="ek-text-muted-foreground ek-text-xs ek-ml-3">
                         {isLoadingOrders
                           ? 'loading'
                           : `${maxQuantity} items avaiable`}
                       </span>
                     </span>
-                    <span className="font-semibold ">{quantity}</span>
+                    <span className="ek-font-semibold">{quantity}</span>
                   </div>
-                  <div className="flex items-center gap-4 flex-1">
+                  <div className="ek-flex ek-items-center ek-gap-4 ek-flex-1">
                     <Slider
                       value={[quantity]}
                       onValueChange={handleSliderChange}
                       min={0}
                       max={maxQuantity}
                       step={1}
-                      className="flex-1 cursor-pointer"
+                      className="ek-flex-1 ek-cursor-pointer"
                     />
                   </div>
                 </div>
@@ -409,10 +435,10 @@ export function SweepModal({
                         token={paymentToken}
                       />
                     }
-                    className="items-start text-sm"
+                    className="ek-items-start ek-text-sm"
                   />
                 )}
-                <Separator className="my-1" />
+                <Separator className="ek-my-1" />
                 <KeyValueLine
                   k="Total"
                   v={
@@ -422,10 +448,10 @@ export function SweepModal({
                       token={paymentToken}
                     />
                   }
-                  className="items-start font-semibold"
+                  className="ek-items-start ek-font-semibold"
                 />
                 <DialogFooter>
-                  <div className="flex flex-col flex-1 space-y-2">
+                  <div className="ek-flex ek-flex-col ek-flex-1 ek-space-y-2">
                     {!address ? (
                       // <ConnectKitButton
                       //   {...(theme && { mode: theme.mode as any })}
@@ -433,7 +459,7 @@ export function SweepModal({
                       <ConnectKitButton.Custom>
                         {({ isConnected, show }) => {
                           return (
-                            <Button onClick={show} className="w-full">
+                            <Button onClick={show} className="ek-w-full">
                               {isConnected ? address : 'Connect Wallet'}
                             </Button>
                           )
@@ -441,7 +467,7 @@ export function SweepModal({
                       </ConnectKitButton.Custom>
                     ) : hasEnoughNativeCurrency ? (
                       <Button
-                        className="w-full"
+                        className="ek-w-full"
                         onClick={handlePay}
                         disabled={
                           !address ||
@@ -452,7 +478,7 @@ export function SweepModal({
                         }
                       >
                         {isPending ? (
-                          <div className="flex items-center gap-2">
+                          <div className="ek-flex ek-items-center ek-gap-2">
                             <Spinner size="sm" />
                             Submitting...
                           </div>
@@ -461,8 +487,8 @@ export function SweepModal({
                         )}
                       </Button>
                     ) : (
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-destructive text-sm">
+                      <div className="ek-flex ek-items-center ek-justify-between ek-text-sm">
+                        <span className="ek-text-destructive ek-text-sm">
                           Insufficient Balance
                         </span>
                         {balance && (
@@ -476,7 +502,7 @@ export function SweepModal({
                         )}
                       </div>
                     )}
-                    <div className="w-full text-sm">
+                    <div className="ek-w-full ek-text-sm">
                       {hash && (
                         <div>
                           Transaction Hash: <AddressCopy address={hash} />
@@ -485,7 +511,7 @@ export function SweepModal({
                       {isConfirming && <div>Waiting for confirmation...</div>}
                       {isConfirmed && <div>Transaction confirmed.</div>}
                       {error && (
-                        <div className="text-destructive">
+                        <div className="ek-text-destructive">
                           Error:
                           {(error as BaseError).shortMessage || error.message}
                         </div>

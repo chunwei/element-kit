@@ -19,14 +19,14 @@ interface Props {
 
 function NotAuthenticated({ onConfirm }: Props) {
   return (
-    <DialogContent className="ek-themes-wrapper sm:max-w-[425px]">
+    <DialogContent className="ek-themes-wrapper sm:ek-max-w-[425px]">
       <DialogHeader>
         <DialogTitle>Not Authenticated</DialogTitle>
         <DialogDescription>
-          <div className="flex items-center justify-center text-yellow-500 my-4">
+          <div className="ek-flex ek-items-center ek-justify-center ek-text-yellow-500 ek-my-4">
             <ShieldAlert size={64} />
           </div>
-          <p className="text-muted-foreground">
+          <p className="ek-text-muted-foreground">
             The NFT you are currently purchasing belongs to a collection that
             has not been officially certified by Element. Please confirm the
             authenticity of the current collection to avoid unnecessary losses.
@@ -58,17 +58,17 @@ function NotAuthenticated({ onConfirm }: Props) {
           royalty: 1
         }}
       />
-      <div className="flex items-center justify-center space-x-2 my-4">
+      <div className="ek-flex ek-items-center ek-justify-center ek-space-x-2 ek-my-4">
         <Checkbox id="auth" />
         <Label
           htmlFor="auth"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          className="ek-text-sm ek-font-medium ek-leading-none peer-disabled:ek-cursor-not-allowed peer-disabled:ek-opacity-70"
         >
           Don't warn me about this collection
         </Label>
       </div>
       <DialogFooter>
-        <Button className="w-full" type="submit" onClick={onConfirm}>
+        <Button className="ek-w-full" type="submit" onClick={onConfirm}>
           Confirm
         </Button>
       </DialogFooter>

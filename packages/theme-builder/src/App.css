@@ -1,0 +1,75 @@
+#root {
+  margin: 0 auto;
+}
+
+.logos-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 16px;
+}
+
+.logo {
+  height: 2em;
+  padding: 4px;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.logo.element:hover {
+  filter: drop-shadow(0 0 2em #61fb8faa);
+}
+
+code{
+  display: grid;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  border-radius: 0;
+  border-width: 0;
+  background-color: transparent;
+  padding: 0;
+  counter-reset: line;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.line{
+  display: inline-block;
+  min-height: 1rem;
+  width: 100%;
+  padding: .125rem 1rem;
+}
+
+.bg-dots{
+  background-image: radial-gradient(circle at 0 0, rgba(0, 0, 0, .1) 1px, transparent 0), radial-gradient(circle at 100% 0, rgba(0, 0, 0, .1) 1px, transparent 0), radial-gradient(circle at 0 100%, rgba(0, 0, 0, .1) 1px, transparent 0), radial-gradient(circle at 100% 100%, rgba(0, 0, 0, .1) 1px, transparent 0);
+background-size: 18px 18px;
+background-position: 50%;
+}
+
+.dark .bg-dots{
+  background-image: radial-gradient(circle at 0 0, rgba(255, 255, 255, .1) 1px, transparent 0), radial-gradient(circle at 100% 0, rgba(255, 255, 255, .1) 1px, transparent 0), radial-gradient(circle at 0 100%, rgba(255, 255, 255, .1) 1px, transparent 0), radial-gradient(circle at 100% 100%, rgba(255, 255, 255, .1) 1px, transparent 0);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}

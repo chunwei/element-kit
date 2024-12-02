@@ -13,10 +13,10 @@ function Price(tokenPrice: TokenPrice) {
     priceUsd
   } = tokenPrice
   return (
-    <div className="flex items-center space-x-1">
-      <img className="w-4 h-4" src={token.icon} alt={token.symbol} />
+    <div className="ek-flex ek-items-center ek-space-x-1">
+      <img className="ek-w-4 ek-h-4" src={token.icon} alt={token.symbol} />
       <span>{price}</span>
-      {priceUsd && <span className="text-muted-foreground">(${priceUsd})</span>}
+      {priceUsd && <span className="ek-text-muted-foreground">(${priceUsd})</span>}
     </div>
   )
 }

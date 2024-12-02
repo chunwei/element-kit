@@ -15,7 +15,7 @@ interface _THEMETYPE {
 const _THEMES: _THEMETYPE[] = [
   {
     name: 'Default',
-    id: 'shadcn',
+    id: 'default',
     colors: {
       background: '0 0% 100%',
       foreground: '240 10% 3.9%',
@@ -507,3 +507,8 @@ export const THEMEPRESETS: (ThemeBase & { id: ThemePreset; name: string })[] =
     .concat(BaseColorPreset())
 
 export type Theme = (typeof THEMES)[number]
+
+export function getPresetThemeById(id?: ThemePreset) {
+  if (!id) return
+  return THEMEPRESETS.find((t) => t.id === id)
+}

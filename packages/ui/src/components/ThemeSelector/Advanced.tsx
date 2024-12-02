@@ -23,16 +23,16 @@ export function AdvancedThemeSelector() {
       <DialogTrigger asChild>
         <Button variant="outline">主题设置</Button>
       </DialogTrigger>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="ek-max-w-2xl">
         <DialogHeader>
           <DialogTitle>主题设置</DialogTitle>
         </DialogHeader>
 
-        <ScrollArea className="h-[600px] pr-4">
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">预设主题</h3>
-              <div className="grid grid-cols-3 gap-4">
+        <ScrollArea className="ek-h-[600px] ek-pr-4">
+          <div className="ek-space-y-6">
+            <div className="ek-space-y-4">
+              <h3 className="ek-text-lg ek-font-semibold">预设主题</h3>
+              <div className="ek-grid ek-grid-cols-3 ek-gap-4">
                 {THEMEPRESETS.map((preset) => (
                   <Button
                     key={preset.id}
@@ -46,10 +46,10 @@ export function AdvancedThemeSelector() {
                         radius: preset.radius
                       })
                     }
-                    className="h-auto p-4 justify-start"
+                    className="ek-h-auto ek-p-4 ek-justify-start"
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="flex gap-1">
+                    <div className="ek-flex ek-items-center ek-gap-2">
+                      <div className="ek-flex ek-gap-1">
                         {
                           /* {Object.values(preset.colors.light).slice(0, 5) */
                           ['primary', 'secondary', 'accent']
@@ -62,7 +62,7 @@ export function AdvancedThemeSelector() {
                             .map((color, i) => (
                               <div
                                 key={i}
-                                className="h-4 w-4 rounded-full"
+                                className="ek-h-4 ek-w-4 ek-rounded-full"
                                 style={{ background: `hsl(${color})` }}
                               />
                             ))
@@ -70,7 +70,7 @@ export function AdvancedThemeSelector() {
                       </div>
                       <span>{preset.name}</span>
                       {currentTheme.preset === preset.id && (
-                        <Check className="h-4 w-4 ml-auto" />
+                        <Check className="ek-h-4 ek-w-4 ek-ml-auto" />
                       )}
                     </div>
                   </Button>
@@ -79,11 +79,11 @@ export function AdvancedThemeSelector() {
             </div>
 
             {customThemes.length > 0 && (
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">自定义主题</h3>
-                <div className="grid grid-cols-3 gap-4">
+              <div className="ek-space-y-4">
+                <h3 className="ek-text-lg ek-font-semibold">自定义主题</h3>
+                <div className="ek-grid ek-grid-cols-3 ek-gap-4">
                   {customThemes.map((customTheme) => (
-                    <div key={`${customTheme.id}-${Date.now()}`} className="relative group">
+                    <div key={`${customTheme.id}-${Date.now()}`} className="ek-relative ek-group">
                       <Button
                         variant={
                           currentTheme.preset === customTheme.id
@@ -97,33 +97,33 @@ export function AdvancedThemeSelector() {
                             radius: customTheme.radius
                           })
                         }
-                        className="w-full h-auto p-4 justify-start"
+                        className="ek-w-full ek-h-auto ek-p-4 ek-justify-start"
                       >
-                        <div className="flex items-center gap-2">
-                          <div className="flex gap-1">
+                        <div className="ek-flex ek-items-center ek-gap-2">
+                          <div className="ek-flex ek-gap-1">
                             {Object.values(customTheme.colors.light)
                               .slice(0, 5)
                               .map((color, i) => (
                                 <div
                                   key={i}
-                                  className="h-4 w-4 rounded-full"
+                                  className="ek-h-4 ek-w-4 ek-rounded-full"
                                   style={{ background: `hsl(${color})` }}
                                 />
                               ))}
                           </div>
                           <span>{customTheme.name}</span>
                           {currentTheme.preset === customTheme.id && (
-                            <Check className="h-4 w-4 ml-auto" />
+                            <Check className="ek-h-4 ek-w-4 ek-ml-auto" />
                           )}
                         </div>
                       </Button>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="ek-absolute ek-right-2 ek-top-1/2 ek--translate-y-1/2 ek-opacity-0 group-hover:ek-opacity-100 ek-transition-opacity"
                         onClick={() => deleteCustomTheme(customTheme.id)}
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="ek-h-4 ek-w-4" />
                       </Button>
                     </div>
                   ))}
@@ -131,8 +131,8 @@ export function AdvancedThemeSelector() {
               </div>
             )}
 
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold">创建新主题</h3>
+            <div className="ek-space-y-4">
+              <h3 className="ek-text-lg ek-font-semibold">创建新主题</h3>
               <ThemeCustomizer />
             </div>
           </div>

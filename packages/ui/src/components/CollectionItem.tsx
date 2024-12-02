@@ -14,16 +14,16 @@ function CollectionItem({ collection }: Props) {
   const { contracts, isVerified, name, imageUrl } = collection
   const contract = contracts?.[0] ?? {}
   return (
-    <div className="flex items-center space-x-4">
-      <Avatar className="h-20 w-20 border rounded-md my-2">
+    <div className="ek-flex ek-items-center ek-space-x-4">
+      <Avatar className="ek-h-20 ek-w-20 ek-border ek-rounded-md ek-my-2">
         <AvatarImage src={imageUrl} alt={name} />
-        <AvatarFallback className="rounded-md">
+        <AvatarFallback className="ek-rounded-md">
           {name?.slice(0, 2)}
         </AvatarFallback>
       </Avatar>
-      <div className="grid flex-1 text-left text-sm leading-tight gap-2">
-        <div className="flex items-center gap-2">
-          <span className="truncate font-semibold">{name}</span>
+      <div className="ek-grid ek-flex-1 ek-text-left ek-text-sm ek-leading-tight ek-gap-2">
+        <div className="ek-flex ek-items-center ek-gap-2">
+          <span className="ek-truncate ek-font-semibold">{name}</span>
           {isVerified && (
             <img
               src="https://static.element.bid/build/img/verify-collection-b70c56f5.svg"
@@ -31,14 +31,14 @@ function CollectionItem({ collection }: Props) {
             />
           )}
         </div>
-        <div className="flex items-center gap-1">
-          <span className="w-4 h-4">
+        <div className="ek-flex ek-items-center ek-gap-1">
+          <span className="ek-w-4 ek-h-4">
             {
               chainIcons[elementChains[contract.blockChain.chain]?.chainId]
                 ?.color
             }
           </span>
-          <span className="truncate text-xs">
+          <span className="ek-truncate ek-text-xs">
             {elementChains[contract.blockChain.chain]?.title}
           </span>
           <Separator orientation="vertical" />

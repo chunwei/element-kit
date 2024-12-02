@@ -2,7 +2,7 @@ import type { WagmiConfig } from '@/wagmiConfig'
 import { ThemeConfig } from './theme'
 
 export interface ElementKitConfig {
-  theme?: Partial<ThemeConfig>
+  theme?: ThemeConfig
   locale?: string
   debug?: boolean
   apiKey?: string

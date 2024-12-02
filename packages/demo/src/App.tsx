@@ -17,8 +17,9 @@ function App() {
     <ElementKitProvider
       config={{
         theme: {
-          mode: 'system',
-          colors: { light: {}, dark: {} }
+          preset: 'daylight',
+          mode: 'system'
+          // colors: { light: {}, dark: {} }
         },
         locale: 'zh-CN',
         debug: process.env.NODE_ENV === 'development',
@@ -32,7 +33,7 @@ function App() {
         <Collections />
       </div>
       <div className="logos-bar w-full flex justify-between">
-        <div className="flex space-x-4 items-center">
+        <div className="left flex space-x-4 items-center">
           <a href="https://vite.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite" />
           </a>
@@ -47,7 +48,7 @@ function App() {
             />
           </a>
         </div>
-        <div className="flex space-x-4 items-center">
+        <div className="right flex space-x-4 items-center">
           <ThemeSelector /> {/* 简单的下拉选择器 */}
           <AdvancedThemeSelector /> {/* 高级主题管理器 */}
           <ThemeCustomizer />

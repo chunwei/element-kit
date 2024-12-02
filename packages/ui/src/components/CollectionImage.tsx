@@ -10,7 +10,7 @@ interface CollectionImageProps {
 }
 
 const CollectionImage = memo<CollectionImageProps>(
-  ({ collection, className = '', onImageLoad, onImageError }) => {
+  ({ collection, className="", onImageLoad, onImageError }) => {
     const [showPlaceholder, setShowPlaceholder] = useState(false)
     const [imageLoaded, setImageLoaded] = useState(false)
     const [currentSrc, setCurrentSrc] = useState<string>(

@@ -44,7 +44,7 @@ export interface ThemeBase {
 }
 export interface ThemeConfig extends Partial<ThemeBase> {
   mode: ThemeMode
-  preset: ThemePreset
+  preset?: ThemePreset
 }
 export interface Theme extends ThemeBase {
   id: string
@@ -56,4 +56,6 @@ export interface ThemeContextType {
   mode: ThemeMode
   setMode: (mode: ThemeMode) => void
   setTheme: (theme: Partial<ThemeConfig>) => void
+  namespace: string
+  themeWrapper?: HTMLDivElement | null
 }

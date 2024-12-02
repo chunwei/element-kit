@@ -15,7 +15,7 @@ function CollectionStatsBase({
   royalty
 }: Props) {
   return (
-    <div className="flex flex-col space-y-2  my-4">
+    <div className="ek-flex ek-flex-col ek-space-y-2 ek-my-4">
       <KeyValueLine
         k="Contract Address"
         v={abbr(contractAddress)}

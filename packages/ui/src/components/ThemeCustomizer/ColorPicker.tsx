@@ -77,16 +77,16 @@ export function ColorPicker({ value, onChange }: ColorPickerProps) {
     <Popover>
       <PopoverTrigger asChild>
         <button
-          className="h-8 w-8 rounded-md border"
+          className="ek-h-8 ek-w-8 ek-rounded-md ek-border"
           style={{ background: `hsl(${value})` }}
         />
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-4">
+      <PopoverContent className="ek-w-auto ek-p-4">
         <input
           type="color"
           value={hslToHex(value)}
           onChange={(e) => onChange(hexToHsl(e.target.value))}
-          className="h-40 w-40 cursor-pointer"
+          className="ek-h-40 ek-w-40 ek-cursor-pointer"
         />
       </PopoverContent>
     </Popover>

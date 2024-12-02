@@ -78,7 +78,7 @@ export function BuyModal({ trigger }: Props): ReactElement {
               {showWarning ? (
                 <NotAuthenticated onConfirm={handleConfirm} />
               ) : (
-                <DialogContent className="ek-themes-wrapper sm:max-w-[425px]">
+                <DialogContent className="ek-themes-wrapper sm:ek-max-w-[425px]">
                   <DialogHeader>
                     <DialogTitle>Buy</DialogTitle>
                   </DialogHeader>
@@ -86,16 +86,16 @@ export function BuyModal({ trigger }: Props): ReactElement {
                   <KeyValueLine
                     k="Price"
                     v={<Price2L {...demoAsset.price} />}
-                    className="items-start"
+                    className="ek-items-start"
                   />
-                  <Separator className="my-1" />
+                  <Separator className="ek-my-1" />
                   <KeyValueLine
                     k="You Pay"
                     v={<Price2L {...demoAsset.price} />}
-                    className="items-start"
+                    className="ek-items-start"
                   />
                   <DialogFooter>
-                    <Button className="w-full" type="submit">
+                    <Button className="ek-w-full" type="submit">
                       Buy
                     </Button>
                   </DialogFooter>

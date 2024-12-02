@@ -18,17 +18,17 @@ const AddressCopy = ({ address = '' }) => {
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="text-xs font-mono">{abbr(address)}</span>
+    <div className="ek-flex ek-items-center ek-gap-2">
+      <span className="ek-text-xs ek-font-mono">{abbr(address)}</span>
       <button
         onClick={handleCopy}
-        className="p-1 hover:bg-gray-100 rounded-full transition-colors duration-200"
+        className="ek-p-1 hover:ek-bg-gray-100 ek-rounded-full ek-transition-colors ek-duration-200"
         aria-label={copied ? 'Copied!' : 'Copy address'}
       >
         {copied ? (
-          <Check className="w-3 h-3 text-green-500" />
+          <Check className="ek-w-3 ek-h-3 ek-text-green-500" />
         ) : (
-          <Copy className="w-3 h-3 text-gray-500" />
+          <Copy className="ek-w-3 ek-h-3 ek-text-gray-500" />
         )}
       </button>
     </div>

@@ -4,18 +4,18 @@ import Price from './Price'
 type Props = { asset: any }
 function AssetItem({ asset }: Props) {
   return (
-    <div className="flex items-center space-x-4">
-      <Avatar className="h-20 w-20 rounded-md my-4">
+    <div className="ek-flex ek-items-center ek-space-x-4">
+      <Avatar className="ek-h-20 ek-w-20 ek-rounded-md ek-my-4">
         <AvatarImage src={asset.imgUrl} alt={asset.name} />
-        <AvatarFallback className="rounded-md">
+        <AvatarFallback className="ek-rounded-md">
           {asset.name?.substr(0, 2)}
         </AvatarFallback>
       </Avatar>
-      <div className="grid flex-1 text-left text-sm leading-tight gap-2">
-        <span className="truncate font-semibold">{asset.name}</span>
-        <span className="truncate text-xs">{asset.collection.name}</span>
-        <span className="truncate flex items-center space-x-2">
-          <span className="text-muted-foreground">Floor Price</span>
+      <div className="ek-grid ek-flex-1 ek-text-left ek-text-sm ek-leading-tight ek-gap-2">
+        <span className="ek-truncate ek-font-semibold">{asset.name}</span>
+        <span className="ek-truncate ek-text-xs">{asset.collection.name}</span>
+        <span className="ek-truncate ek-flex ek-items-center ek-space-x-2">
+          <span className="ek-text-muted-foreground">Floor Price</span>
           <Price {...asset.floorPrice} />
         </span>
       </div>
