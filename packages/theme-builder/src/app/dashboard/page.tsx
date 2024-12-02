@@ -1,16 +1,12 @@
 import { AppSidebar } from '@/components/app-sidebar'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger
 } from '@/components/ui/sidebar'
-import {
-  SweepModal,
-  AdvancedThemeSelector,
-  ElementKitProvider
-} from '@element-kit/ui'
+import { SweepModal, ElementKitProvider } from '@element-kit/ui'
 import { useEffect, useRef, useState } from 'react'
 import { sweepModalDemoData } from '@/mock/demo-collection'
 import { Monitor, Smartphone } from 'lucide-react'
@@ -30,9 +26,9 @@ export default function ThemeBuilder() {
   }, [])
   const [activeDemoTab, setActiveDemoTab] = useState('demo')
   const [activeResponsiveTab, setActiveResponsiveTab] = useState('desktop')
-
+  console.log({ isContainerReady, activeResponsiveTab })
   const { theme } = useTheme()
-  console.log('theme-builder page', { theme })
+  // console.log('theme-builder page', { theme })
   return (
     <SidebarProvider
       style={
